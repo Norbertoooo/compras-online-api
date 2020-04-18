@@ -15,12 +15,15 @@ public class ProdutoService {
         this.produtoRepository = produtoRepository;
     }
 
-    public List<Produto> listarProdutos() {
+    public List<Produto> findAll() {
         return produtoRepository.findAll();
     }
 
-
     public Produto save(Produto produto) {
         return produtoRepository.save(produto);
+    }
+
+    public void deleteById(Long id) {
+        produtoRepository.deleteById(id);
     }
 }

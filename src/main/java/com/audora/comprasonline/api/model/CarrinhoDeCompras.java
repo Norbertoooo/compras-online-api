@@ -18,9 +18,9 @@ public class CarrinhoDeCompras implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
-    private long precoTotal;
+    private Double precoTotal;
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<Produto> produtos;

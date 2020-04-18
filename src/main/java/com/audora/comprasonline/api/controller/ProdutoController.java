@@ -25,13 +25,20 @@ public class ProdutoController {
 
     @GetMapping
     public ResponseEntity<List<Produto>> listarProdutos() {
-        return ResponseEntity.ok().body(produtoService.listarProdutos());
+        log.info("Request to find all Produtos");
+        return ResponseEntity.ok().body(produtoService.findAll());
     }
 
     @PostMapping
     public ResponseEntity<Produto> registrarProduto(@RequestBody Produto produto) {
+        log.info("Request to save Produto: {}", produto);
         return ResponseEntity.status(HttpStatus.CREATED).body(produtoService.save(produto));
     }
 
-
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> excluirProduto(@PathVariable Long id) {
+        log.info("Request to delete Produto by id: {}", id);
+        produtoService.deleteById(id);
+        return ResponseEntity.noContent().build();
+    }
 }

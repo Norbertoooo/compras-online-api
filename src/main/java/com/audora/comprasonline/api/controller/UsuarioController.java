@@ -37,13 +37,7 @@ public class UsuarioController {
         return ResponseEntity.ok().body(usuario);
     }
 
-    @PostMapping("/cadastrar")
-    public ResponseEntity<Usuario> cadastrarUsuario(@Valid @RequestBody Usuario usuario) {
-        log.info("Cadastrando usuario: {}", usuario);
-        return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.save(usuario));
-    }
-
-    @PutMapping("/atualizar")
+    @PutMapping
     public ResponseEntity<Usuario> atualizarUsuario(@Valid @RequestBody Usuario usuario) {
         log.info("Atualizando usuario: {}", usuario);
         return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.save(usuario));
