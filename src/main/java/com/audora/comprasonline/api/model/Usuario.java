@@ -19,10 +19,13 @@ import java.io.Serializable;
 public class Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
     @Email
-    @NotEmpty
+    @NotEmpty(message = "email não pode ser nulo")
+    @Column(unique=true)
     private String email;
 
     @NotNull(message = "Senha não pode ser nula")
