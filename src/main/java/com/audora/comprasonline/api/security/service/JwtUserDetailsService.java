@@ -39,6 +39,7 @@ public class JwtUserDetailsService implements UserDetailsService {
         newUser.setSenha(bcryptEncoder.encode(user.getSenha()));
         newUser.setPerfil(PerfilEnum.ROLE_USUARIO);
         CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
+        carrinhoDeCompras.setPrecoTotal(00.00);
         newUser.setCarrinhoDeCompras(carrinhoDeCompras);
         return usuarioRepository.save(newUser);
     }

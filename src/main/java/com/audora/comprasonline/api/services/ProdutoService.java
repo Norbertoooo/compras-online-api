@@ -1,5 +1,6 @@
 package com.audora.comprasonline.api.services;
 
+import com.audora.comprasonline.api.dto.ProdutoDto;
 import com.audora.comprasonline.api.model.Produto;
 import com.audora.comprasonline.api.repository.ProdutoRepository;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,10 @@ public class ProdutoService {
 
     public List<Produto> findAll() {
         return produtoRepository.findAll();
+    }
+
+    public Produto findByNome(ProdutoDto produtoDto) {
+        return produtoRepository.findByNome(produtoDto.getNome());
     }
 
     public Produto save(Produto produto) {

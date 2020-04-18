@@ -1,5 +1,6 @@
 package com.audora.comprasonline.api.services;
 
+import com.audora.comprasonline.api.dto.ProdutoDto;
 import com.audora.comprasonline.api.model.CarrinhoDeCompras;
 import com.audora.comprasonline.api.model.Produto;
 import com.audora.comprasonline.api.model.Usuario;
@@ -29,11 +30,9 @@ public class CarrinhoDeComprasService {
         return carrinhoDeCompras;
     }
 
-    public CarrinhoDeCompras adicionarProduto(String email, Produto produto) {
-        CarrinhoDeCompras carrinhoDeCompras = encontrarCarrinhoPorEmail(email);
-        carrinhoDeCompras.getProdutos().add(produto);
-        return atualizaValorTotal(produto.getPreco(), carrinhoDeCompras);
-    }
+//    public CarrinhoDeCompras adicionarProduto(String email, ProdutoDto produtoDto) {
+//
+//    }
 
     public CarrinhoDeCompras encontrarCarrinhoPorEmail(String email) {
         Usuario usuario = usuarioService.procurarUsuarioPorEmail(email);
