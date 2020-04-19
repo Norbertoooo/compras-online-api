@@ -6,6 +6,7 @@ import com.audora.comprasonline.api.security.model.JwtRequest;
 import com.audora.comprasonline.api.security.model.JwtResponse;
 import com.audora.comprasonline.api.security.service.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -55,7 +56,7 @@ public class JwtAuthenticationController {
 
     @PostMapping("/registrar")
     public ResponseEntity<?> saveUser( @Valid @RequestBody UsuarioDto user) throws Exception {
-        return ResponseEntity.ok(userDetailsService.save(user));
+        return ResponseEntity.status(HttpStatus.CREATED).body(userDetailsService.save(user));
     }
 
 }
