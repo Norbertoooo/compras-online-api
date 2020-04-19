@@ -2,7 +2,6 @@ package com.audora.comprasonline.api.services;
 
 import com.audora.comprasonline.api.model.CarrinhoDeCompras;
 import com.audora.comprasonline.api.model.Usuario;
-import com.audora.comprasonline.api.model.enums.PerfilEnum;
 import com.audora.comprasonline.api.repository.UsuarioRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,9 +30,6 @@ public class UsuarioService {
     public Usuario save(Usuario usuario) {
 
         usuario.setEmail(passwordEncoder.encode(usuario.getSenha()));
-
-        if (usuario.getPerfil() == null)
-            usuario.setPerfil(PerfilEnum.ROLE_USUARIO);
 
         if (usuario.getCarrinhoDeCompras() == null) {
             CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();

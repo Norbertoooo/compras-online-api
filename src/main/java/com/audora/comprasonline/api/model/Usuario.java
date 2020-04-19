@@ -1,6 +1,5 @@
 package com.audora.comprasonline.api.model;
 
-import com.audora.comprasonline.api.model.enums.PerfilEnum;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -33,7 +32,7 @@ public class Usuario implements Serializable {
     @NotEmpty
     private String senha;
 
-    private PerfilEnum perfil;
+    private boolean admin;
 
     @OneToOne(cascade = CascadeType.ALL)
     private CarrinhoDeCompras carrinhoDeCompras;
