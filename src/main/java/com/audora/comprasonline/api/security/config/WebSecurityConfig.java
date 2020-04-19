@@ -38,6 +38,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/autenticar","/registrar","/h2-console/**").permitAll()
                 .antMatchers("/api/produto").hasRole("ADMIN")
+                .antMatchers("/api/desconto").hasRole("ADMIN")
+                .antMatchers("/api/categoria-produto").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
