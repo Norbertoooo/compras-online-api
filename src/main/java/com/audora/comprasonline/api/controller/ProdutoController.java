@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,12 +31,14 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<Produto> registrarProduto(@RequestBody Produto produto) {
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Produto> cadastrarProduto(@RequestBody Produto produto) {
         log.info("Request to save Produto: {}", produto);
         return ResponseEntity.status(HttpStatus.CREATED).body(produtoService.save(produto));
     }
 
     @DeleteMapping("{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> excluirProduto(@PathVariable Long id) {
         log.info("Request to delete Produto by id: {}", id);
         produtoService.deleteById(id);

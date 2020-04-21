@@ -24,7 +24,7 @@ public class Usuario implements Serializable {
     private Long id;
 
     @Email
-    @NotEmpty(message = "email não pode ser nulo")
+    @NotEmpty(message = "email não pode ser vazio")
     @Column(unique=true)
     private String email;
 

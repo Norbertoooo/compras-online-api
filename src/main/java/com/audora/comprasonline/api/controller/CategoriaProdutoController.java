@@ -17,21 +17,28 @@ public class CategoriaProdutoController {
 
     private static final Logger log = LoggerFactory.getLogger(CategoriaProdutoController.class);
 
-    private final CategoriaProdutoService CategoriaProdutoService;
+    private final CategoriaProdutoService categoriaProdutoService;
 
     public CategoriaProdutoController(CategoriaProdutoService CategoriaProdutoService) {
-        this.CategoriaProdutoService = CategoriaProdutoService;
+        this.categoriaProdutoService = CategoriaProdutoService;
     }
 
     @GetMapping
     public ResponseEntity<List<CategoriaProduto>> listarCategorias() {
         log.info("Request to find all Categorias ");
-        return ResponseEntity.ok().body(CategoriaProdutoService.listarCategorias());
+        return ResponseEntity.ok().body(categoriaProdutoService.findAll());
     }
 
     @PostMapping
     public ResponseEntity<CategoriaProduto> cadastrarCategoria(@RequestBody CategoriaProduto categoriaProduto) {
         log.info("Request to save categoria: {}", categoriaProduto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(CategoriaProdutoService.salvarCategoria(categoriaProduto));
+        return ResponseEntity.status(HttpStatus.CREATED).body(categoriaProdutoService.save(categoriaProduto));
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> excluirCategoria(@PathVariable Long id) {
+        log.info("Request to delete Categoria by id: {}", id);
+        categoriaProdutoService.deleteById(id);
+        return ResponseEntity.noContent().build();
     }
 }

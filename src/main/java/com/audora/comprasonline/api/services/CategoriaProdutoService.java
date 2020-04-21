@@ -15,11 +15,15 @@ public class CategoriaProdutoService {
         this.categoriaRepository = categoriaRepository;
     }
 
-    public List<CategoriaProduto> listarCategorias() {
+    public List<CategoriaProduto> findAll() {
         return categoriaRepository.findAll();
     }
 
-    public CategoriaProduto salvarCategoria( CategoriaProduto categoriaProduto) {
+    public CategoriaProduto save(CategoriaProduto categoriaProduto) {
         return categoriaRepository.save(categoriaProduto);
+    }
+
+    public void deleteById(Long id) {
+        categoriaRepository.deleteById(id);
     }
 }

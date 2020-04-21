@@ -32,7 +32,7 @@ public class JwtAuthenticationController {
     private JwtUserDetailsService userDetailsService;
 
     @PostMapping("/autenticar")
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
+    public ResponseEntity<?> autenticarUsuario(@RequestBody JwtRequest authenticationRequest) throws Exception {
 
         authenticate(authenticationRequest.getEmail(), authenticationRequest.getSenha());
 
@@ -55,7 +55,7 @@ public class JwtAuthenticationController {
     }
 
     @PostMapping("/registrar")
-    public ResponseEntity<?> saveUser( @Valid @RequestBody UsuarioDto user) throws Exception {
+    public ResponseEntity<?> registraNovoUsuario( @Valid @RequestBody UsuarioDto user) throws Exception {
         return ResponseEntity.status(HttpStatus.CREATED).body(userDetailsService.save(user));
     }
 

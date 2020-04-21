@@ -6,7 +6,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -28,7 +27,7 @@ public class UsuarioController {
     @GetMapping
     public ResponseEntity<List<Usuario>> listarTodosUsuarios() {
         log.info("Listando todos os usuarios no sistema");
-        return ResponseEntity.ok().body(usuarioService.listarUsuarios());
+        return ResponseEntity.ok().body(usuarioService.findAll());
     }
 
     @GetMapping("/{email}")
@@ -45,10 +44,9 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{email}")
-    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Void> excluirUsuario( @PathVariable String email ) {
         log.info("Excluindo usuario do email: {}", email);
-        usuarioService.excluirUsuario(email);
+        usuarioService.deleteByEmail(email);
         return ResponseEntity.noContent().build();
     }
 }

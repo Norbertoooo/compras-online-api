@@ -23,7 +23,7 @@ public class UsuarioService {
         this.usuarioRepository = usuarioRepository;
     }
 
-    public List<Usuario> listarUsuarios() {
+    public List<Usuario> findAll() {
         return usuarioRepository.findAll();
     }
 
@@ -42,7 +42,7 @@ public class UsuarioService {
         return usuarioRepository.findUsuarioByEmail(email);
     }
 
-    public void excluirUsuario(String email) {
+    public void deleteByEmail(String email) {
         log.info("Serviço - Excluindo usuario pelo email: {}", email);
         usuarioRepository.delete(procurarUsuarioPorEmail(email));
     }

@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -38,9 +37,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/autenticar","/registrar","/h2-console/**").permitAll()
                 .antMatchers("/v2/api-docs", "/swagger*/**", "/configuration/**", "/webjars/**").permitAll()
-                .antMatchers("/api/produto").hasRole("ADMIN")
-                .antMatchers("/api/desconto").hasRole("ADMIN")
-                .antMatchers("/api/categoria-produto").hasRole("ADMIN")
+                .antMatchers( "/api/usuario/**").hasRole("ADMIN")
+                .antMatchers( "/api/categoria-produto/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(jwtAuthenticationEntryPoint)
