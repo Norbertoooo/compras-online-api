@@ -22,7 +22,7 @@ A autenticação é utilizando tokens jwt logo quando uma requisição for feita
     
     'Authorization: Bearer <token>'
 
-###Autenticar usuario
+### Autenticar usuario
 Para autenticar um usuario envie uma requisição POST para http://localhost:8081/autenticar
     
     {
@@ -30,7 +30,7 @@ Para autenticar um usuario envie uma requisição POST para http://localhost:808
          "senha": "123456"
     }
     
-###Registrar novo usuario    
+### Registrar novo usuario    
 Para registrar novo usuario cliente envie uma requisição POST para http://localhost:8081/registrar
     
     {
